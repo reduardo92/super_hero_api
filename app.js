@@ -1,10 +1,7 @@
 const url2 = "https://akabab.github.io/superhero-api/api/all.json";
-// const url2 = "https://akabab.github.io/superhero-api/api/id/115.json";
 
 // Character Info's
 const characterInfo = [];
-// Character Names
-const characternames = [];
 
 // fetch Characters
 fetch(url2)
@@ -18,54 +15,53 @@ function fecthCharacters(data) {
     for (const i in data) {
         characterNames.push(`{"id":${data[i].id},"name":"${data[i].name}","powerstats":{"intelligence": ${data[i].powerstats.intelligence},"strength": ${data[i].powerstats.strength},"speed": ${data[i].powerstats.speed},"durability": ${data[i].powerstats.durability},"power": ${data[i].powerstats.power},"combat": ${data[i].powerstats.combat}},"image":"${data[i].images.lg}"}`);
     }
-    // push character's names
-    for (const i in data) {
-        characternames.push(data[i].name);
-    }
     // push json parse 
     for (const x in characterNames) {
         characterInfo.push(JSON.parse(characterNames[x]));
     }
 }
 
-const CharacterInput = (input) => ({
-    input,
-})
+const Ui = () => ({
+    displayUsers(matchNames, names) {
+        return names.filter(character => {
+            const regExpg = new RegExp(matchNames, 'gi');
+            return character.name.match(regExpg)
+        })
+    },
+    setlistNames(value, names) {
+        const matchName = this.displayUsers(value, names);
+        const html = matchName.map(character => {
+            return `
+            <li class="list-group-item">
+                <div>${character.name}<img class="avatar" src="${character.image}"></div>
+            </li>
+            `
+        }).join('');
 
+        searchName.innerHTML = html;
+    },
+});
 
-const Ui = () => {};
+const e = Ui();
+
+// input element
+const searchInput = document.querySelector("#search");
+searchInput.addEventListener("keyup", getUser);
+searchInput.addEventListener("change", getUser);
+// ul element
+const searchName = document.querySelector("#match-name");
 
 
 // Get Character
-function getUser(e) {
-    // Get Input
-    const searchInput = document.querySelector("#search").value;
-    // set Input 
-    const charInput = CharacterInput(searchInput);
-
-    return charInput;
+function getUser() {
+    //  Instantiate UI
+    const ui = Ui();
+    if (this.value === "") {
+        searchName.innerHTML = '';
+    } else {
+        ui.setlistNames(this.value, characterInfo)
+    }
 }
-
-
-
-// function displayUsers(data) {
-//     const container = document.querySelector("#marvel-contain");
-//     container.innerHTML = `
-//     <div><img src="${data[109].images.md}"></div>
-//     <div>${data[109].name}</div>`
-//     // console.log(data[0].biography.alignment)
-//     // for (const i in data) {
-//     //     const powerStats = data[i].powerstats;
-//     //     const measurements = data[i].appearance;
-//     //     if (i < 50) {
-//     //         container.innerHTML +=
-
-//     //     }
-//     // }
-// }
-
-
-
 
 
 

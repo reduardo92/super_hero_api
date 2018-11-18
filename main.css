@@ -98,4 +98,8 @@ input {
   width: 100%;
   max-width: 400px;
 }
+
+.avatar {
+  width: 90px;
+}
 /*# sourceMappingURL=main.css.map */
