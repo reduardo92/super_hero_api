@@ -1,40 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
-      integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="/main.css" />
-    <title>Marvel Character</title>
-  </head>
 
-  <body>
-    <div class="contain">
-      <!-- Pokemon Logo -->
-      <div class="pokemon-logo"><img src="/img/marvel-logo.png" alt="" /></div>
-      <!-- Pokemon's Cards -->
-      <form action="submit" id="from">
-        <label for="search" class="fas fa-search">Character</label>
-        <input type="text" id="search" />
-      </form>
-      <div class="match-container">
-        <ul id="match-name" class="list-group list-group-flush"></ul>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+    crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous" />
+  <link rel="stylesheet" href="/main.css" />
+  <title>Marvel Character</title>
+</head>
+
+<body>
+  <div class="contain">
+    <!-- Pokemon Logo -->
+    <div class="pokemon-logo"><img src="/img/marvel-logo.png" alt="" /></div>
+    <!-- alert message -->
+    <div id="message" class="alert"></div>
+    <!-- input element -->
+    <div class="fix-input">
+      <label for="search" class="fas fa-search">Character</label>
+      <div class="search">
+        <span class="fa fa-search"></span>
+        <input type="text" id="search" class="search-input" />
       </div>
-      <div id="marvel-contain" class="marvel"></div>
+      <!-- container for peek search -->
+      <div id="peek-container" class="container-peek">
+        <div id="peek-name" class="list-group list-group-flush"></div>
+      </div>
     </div>
+    <!-- selected Container -->
+    <div id="selected-container" class="marvel"></div>
+  </div>
 
-    <script src="/app.js"></script>
-  </body>
+  <script src="/app.js"></script>
+</body>
+
 </html>
